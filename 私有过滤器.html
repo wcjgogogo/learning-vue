@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+    	<h3 v-color="'pink'">{{dt | dateFormat}}</h3>
+    </div>
+    <script>
+		new Vue({
+			el:'#app',
+			data:{
+				dt:new Date()
+			},
+			methods:{
+				
+			},
+			filters:{//定义私有过滤器，过滤器有两个条件【过滤器名称和处理函数】
+				dateFormat:function(dateStr,pattern=''){
+					var dt=new Date(dateStr);
+					//yyyy-mm-dd
+					var y=dt.getFullYear();
+					var m=dt.getMonth()+1;                                                                                                               
+					var d=dt.getDate();
+					//return y+'-'+m+'-'+d;
+					//return `${y}-${m}-${d}`;
+					if(pattern.toLowerCase()==='yyyy-mm-dd'){
+						return `${y}-${m}-${d}`;
+					}else{
+						var hh=dt.getHours();
+						var mm=dt.getMinutes();
+						var ss=dt.getSeconds();
+						return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
+					}
+						}
+			},
+			directives:{
+				color:{
+					bind:function(el,binding){
+						el.style.color=binding.value;
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

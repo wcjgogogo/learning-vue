@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+    	<!--如果要使用组件，直接，把组件的名称，以HTML标签的形式，引入到页面中 -->
+        <mycom1></mycom1>
+    </div>
+    <script>
+		//使用Vue.extend来创建全局的vue组件
+		/*var com1=Vue.extend({
+			template:'<h3>这是使用Vue.extend创建的组件</h3>'//通过template属性，指定了组件要展示的HTML结构
+		})
+		//使用Vue.component('组件的名称'，创建出来的组件模板对象)
+		Vue.component('myCom1',com1)*/
+		
+		Vue.component('mycom1',Vue.extend({
+			template:'<h3>这是使用Vue.extend创建的组件</h3>'
+		}))
+		new Vue({
+			el:'#app',
+			data:{
+				
+			},
+			methods:{
+				
+			}
+		})
+	</script>
+</body>
+</html>

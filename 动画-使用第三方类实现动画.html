@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="vue.js"></script>
+<link href="animation.css" type="text/css" rel="stylesheet">
+<!--入场bounceIn 离场bounceOut -->
+
+</head>
+
+<body>
+	<div id="app">
+    	<input type="button" value="toggle" @click="flag=!flag">
+        <!--<transition enter-active-class="animated bounceIn" leave-active-class="animated bounceIn">
+        	<h3 v-if="flag">这是一个h3</h3>
+    	</transition> -->
+        
+        <!--使用:duration来统一设置入场和离场时候的动画时长 -->
+       <!-- <transition enter-active-class=" bounceIn" leave-active-class=" bounceIn" :duration="400">
+        	<h3 v-if="flag" class="animated">这是一个h3</h3>
+    	</transition> -->
+        
+        <transition enter-active-class="animated bounceIn" leave-active-class="animated bounceIn" :duration="{enter:200,leave:400}">
+        	<h3 v-if="flag">这是一个h3</h3>
+    	</transition>
+    </div>
+    <script>
+		new Vue({
+			el:'#app',
+			data:{
+				flag:false
+			},
+			methods:{
+				
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="vue.min.js"></script>
+<style>
+	[v-cloak]{
+		display:block;
+	}
+</style>
+</head>
+
+<body>
+	<div id="app">
+    	<!--使用v-cloak能够解决插值表达式闪烁的问题 -->
+    	<p v-cloak>----{{ msg }}=====</p>
+        <h4 v-text="msg">=====</h4>
+        <!--默认v-text没有闪烁问题的 -->
+        <!--v-text会覆盖元素中原本的内容，但是插值表达式只会替换自己的这个占位符，不会把整个元素的内容清空 -->
+        <div>{{msg2}}</div>
+        <div v-text="msg2"></div>
+        <div v-html="msg2">34123</div>
+        <!--v-bind是vue中，提供用于绑定属性的指令 -->
+        <!--注意：v-bind:指令可以简写为 :要绑定的属性 -->
+        <!--v-bind中，可以写合法的JS表达式 -->
+        <input type="button" value="按钮" v-bind:title="mytitle+'123'">
+        <!--vue中提供了v-on:事件绑定机制 -->
+         <input type="button" value="按钮" :title="mytitle+'123'" v-on:click="show">
+    </div>
+    <script>
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				msg:"123",
+				msg2:"<h1>哈哈，我是一个大大的</h1>",
+				mytitle:"这是一个自己定义的title",
+			},
+			methods:{//这个methods属性中定义了当前vue实例所有可用的方法
+				show:function(){
+					alert("hello")	
+				}
+			}
+		})
+	</script>
+</body>
+</html>
+
+<!--1、如何定义一个基本的vue代码结构 -->
+<!--2、插值表达式和v-text -->
+<!--3、v-cloak -->
+<!--4、v-html -->
+<!--5、v-bind 缩写是： vue提供的属性绑定机制-->
+<!--6、v-on vue提供的事件绑定机制 缩写是@-->

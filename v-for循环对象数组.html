@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="vue.min.js"></script>
+</head>
+
+<body>
+	<div id="app">
+    	<p v-for="(user,i) in list">ID:{{user.id}}---名字:{{user.name}}---索引:{{i}}</p>
+    </div>
+    <script>
+		var vm=new Vue({
+			el:"#app",
+			data:{
+				list:[
+					{id:1,name:"zs1"},
+					{id:2,name:"zs2"},
+					{id:3,name:"zs3"},
+					{id:4,name:"zs4"},
+				]
+			},
+			methods:{
+				
+			}
+		})
+	</script>
+</body>
+</html>

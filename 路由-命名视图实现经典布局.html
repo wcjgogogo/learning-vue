@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="vue.js"></script>
+<script src="vue-router.js"></script>
+<style>
+	body{
+		margin:0px;
+		padding:0px;
+	}
+	.header{
+		background:red;
+		height:80px;
+	}
+	.container{
+		display:flex;
+		height:600px;
+	}
+	.left{
+		background:blue;
+		flex:2;
+	}
+	.main{
+		background:pink;
+		flex:8;
+	}
+	h1{
+		margin:0px;
+		padding:0px;
+		font-size:16px;
+	}
+</style>
+</head>
+
+<body>
+	<div id="app">
+    	<router-view></router-view>
+        <div class="container">
+        	<router-view name="left"></router-view>
+        	<router-view name="main"></router-view>
+        </div>
+    </div>
+    <script>
+		var header={
+			template:'<h1 class="header">Header</h1>'
+		}
+		var left={
+			template:'<h1 class="left">Left</h1>'
+		}
+		var mainBox={
+			template:'<h1 class="main">mainBox</h1>'
+		}
+		var router=new VueRouter({
+			routes:[
+				/*{path:'/',component:header},
+				{path:'/left',component:left},
+				{path:'/main',component:mainBox}*/
+				{path:'/',components:{
+					'default':header,
+					'left':left,
+					'main':mainBox
+				}}
+			]
+		})
+		new Vue({
+			el:'#app',
+			data:{
+				
+			},
+			methods:{
+				
+			},
+			router:router
+		})
+	</script>
+</body>
+</html>

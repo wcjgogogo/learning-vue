@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="vue.js"></script>
+<style>
+	li{
+		border:1px dashed #999;
+		margin:5px;
+		line-height:35px;
+		font-size:12px;
+		width:100%;
+	}
+	.v-enter,.v-leave-to{
+		opacity:0;
+		transform:translaterY(80px);
+	}
+	.v-enter-active,.v-leave-active{
+		transition:all 0.6s ease;
+	}
+	li:hover{
+		background-color:hotpink;
+		transition:all 0.6s ease;
+	}
+	/* <!--v-move和v-leave-active配合使用，能够实现列表后续的元素，渐渐漂上来的效果 --> */
+	.v-move{
+		transition:all 0.6s ease;
+	}
+	.v-leave-active{
+		position:absolute;
+	}
+</style>
+</head>
+
+<body>
+	<div id="app">
+    	<div>
+        	<label>
+                Id:
+                <input type="text" v-model="id">
+            </label>
+            <label>
+            	Name:
+                <input type="text" v-model="name">
+            </label>
+            <input type="button" @click="add" value="添加">
+        </div>
+    	<!--<ul> -->
+        	<!--在实现列表过滤的时候，如果需要过滤的元素，是通过v-for循环渲染出来的，不能使用transition包裹，需要使用transitionGroup -->
+            <!--给transition-group添加appear实现列表入场是的效果 -->
+            <!--通过为transition-group元素，设置tag属性，指定transition-group渲染为指定的元素，如果不制定tag属性，默认渲染为span标签 -->
+            <transition-group appear tag="ul">
+        	<li v-for="item in list" :key="item.id" @click="del(i)">
+				{{item.id}}---{{item.name}} 
+            </li>
+            </transition-group>
+        <!--</ul> -->
+    </div>
+    <script>
+		new Vue({
+			el:'#app',
+			data:{
+				id:'',
+				name:'',
+				list:[
+					{id:1,name:'赵高'},
+					{id:2,name:'秦桧'},
+					{id:3,name:'严嵩'}				
+				]
+			},
+			methods:{
+				add:function(){
+					this.list.push({id:this.id,name:this.name})
+					this.id=this.name=''
+				},
+				del:function(i){
+					this.list.splice(i,1);
+				}
+			}
+		})
+	</script>
+</body>
+</html>

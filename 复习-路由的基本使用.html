@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="vue.js"></script>
+<script src="vue-router.js"></script>
+</head>
+
+<body>	
+	<div id="app">
+    	<router-link to="/login">登录</router-link>
+        <router-link to="/register">注册</router-link>
+    	<router-view></router-view>
+    </div>
+    <script>
+		var login={
+			template:'<h3>登录组件</h3>'
+		}
+		var register={
+			template:'<h3>祖册组件</h3>'
+		}
+		var router=new VueRouter({
+			routes:[
+				{path:'/',redirect:'/login'},
+				{path:'/login',component:login},
+				{path:'/register',component:register}
+			],
+			linkActiveClass:'myactive'
+		})
+		new Vue({
+			el:'#app',
+			data:{
+				
+			},
+			methods:{
+				
+			},
+			router:router	
+		})
+	</script>
+</body>
+</html>

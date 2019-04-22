@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+    	<p>{{msg | msgFormat('疯狂') | test}}</p>
+    </div>
+    <script>
+		//定义一个过滤器
+		Vue.filter('msgFormat',function(msg,arg){
+			return msg.replace(/单纯/g,arg);
+		})
+		Vue.filter('test',function(msg){
+			return msg+'========='
+		})
+		new Vue({
+			el:'#app',
+			data:{
+				msg:'曾经，我也是一个单纯的少年，单纯的我，傻傻的问，谁是世界上最单纯的男人'
+			},
+			methods:{
+				
+			}	
+		})
+	</script>
+</body>
+</html>

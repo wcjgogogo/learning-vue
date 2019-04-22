@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="vue.js"></script>
+<script src="vue-router.js"></script>
+</head>
+
+<body>
+	<div id="app">
+    	<router-link to="/account">Account</router-link>
+    	<router-view></router-view>
+    </div>
+    <template id="tmp1">
+    	<div>
+        	<h1>这是account组件</h1>
+            <router-link to="/account/login">登录</router-link>
+            <router-link to="/account/register">注册</router-link>
+            <router-view></router-view>
+        </div>
+    </template>
+    <script>
+		
+		var account={
+			template:'#tmp1'
+		}
+		var login={
+			template:'<h3>登录</h3>'
+		}
+		var register={
+			template:'<h3>注册</h3>'
+		}
+		var router=new VueRouter({
+			routes:[
+				{
+					path:'/account',
+					component:account,
+					children:[
+						{path:'login',component:login},
+						{path:'register',component:register}					
+					]
+				}
+				//{path:'/account/login',component:login},
+				//{path:'/account/register',component:register}			
+			]
+		})
+		new Vue({
+			el:'#app',
+			data:{
+				
+			},
+			methods:{
+				
+			},
+			router:router
+		})
+	</script>
+</body>
+</html>

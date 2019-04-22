@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="vue.min.js"></script>
+</head>
+
+<body>
+	<div id="app">
+    	<!--注意：在遍历对象身上的键值对时候，除了有val和key，在第三个位置还有一个索引 -->
+    	<p v-for="(val,key,i) in user">值是:{{val}}---键是:{{key}}--索引:{{i}}</p>
+    </div>
+    <script>
+		var vm=new Vue({
+			el:"#app",
+			data:{
+				user:{
+					id:1,
+					name:'Hohn',
+					gender:'boy'
+				}
+			},
+			methods:{
+				
+			}
+		})
+	</script>
+</body>
+</html>
